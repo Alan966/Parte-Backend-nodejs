@@ -8,6 +8,7 @@ const SubMenu_two = require('./routes/SubMenu_two')
 const SubMenu_three = require('./routes/SubMenu_three')
 const Image_Menu = require('./routes/Image_Menu')
 const cors = require('cors')
+const { response } = require('express')
 
 const app = express(); 
 require('dotenv').config() 
@@ -20,6 +21,10 @@ app.set('port', process.env.PORT || 5000)
 app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(cors())
+
+app.get('/', (req, res) => {
+    response.send('<h1> Servidor con express </h1>')
+})
 
 //Rutas 
 app.use('/submenu/one', SubMenu_one)
