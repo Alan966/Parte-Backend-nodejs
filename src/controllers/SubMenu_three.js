@@ -29,7 +29,36 @@ const list = (req, res) => {
     })
 }
 
+const remove = (req, res) => {
+    let submenuthree = req.submenuthree 
+    submenuthree.remove((err, deletedSubmenuThree) => {
+        if(err){
+            return res.status(400).json({
+                error: err
+            })
+        }
+        res.json({
+            message: 'Submenu three deleted successfully'
+        })
+    })
+}
+
+const SubmenuthreeById = (req, res, next, id) => {
+    SubMenuthree.findById(id)
+    .exec((err, submenuthree) => {
+        if(err || !submenuthree){
+            return res.status(400).json({
+                error: "Submenu three not found" + err
+            })
+        }
+        req.submenuthree = submenuthree;
+        next()
+    })
+}
+
 module.exports = {
     create, 
-    list
+    list, 
+    remove, 
+    SubmenuthreeById
 }

@@ -6,16 +6,8 @@ router.get('/all', controlles.list);
 
 router.post('/create', controlles.create);
 
-router.delete('/:SubmenuthreeById', (req, res) => {
-    res.send({
-        message: 'Los esta eliminando pa'
-    })
-})
+router.delete('/:SubmenuthreeById', controlles.remove);
 
-router.param('SubmenuthreeById', (req, res) => {
-    res.send({
-        message: 'Los esta buscando pa'
-    })
-})
+router.param('SubmenuthreeById', controlles.SubmenuthreeById)
 
 module.exports = router;
