@@ -6,8 +6,8 @@ const { list, read, create, remove, ImageHomeById, photo } = require("../control
 router.get("/all", list)
 router.post("/create", create)
 router.get("/photo/:ImageHomeById", photo)
-router.get("/:ImageHomeById", ImageHomeById)
+router.get("/:ImageHomeById", read)
 router.delete("/:ImageHomeById", remove)
-router.param("ImageHomeById", read)
+router.param("ImageHomeById",ImageHomeById)
 
 module.exports = router;

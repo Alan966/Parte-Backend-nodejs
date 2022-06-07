@@ -23,4 +23,4 @@ const HomeModel = new Schema(
     {timestamps: true}
 )
 
-module.exports = mongoose.model('Home', HomeModel);
+module.exports = mongoose.model('HomeModel', HomeModel);

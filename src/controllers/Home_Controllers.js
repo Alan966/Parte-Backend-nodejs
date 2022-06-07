@@ -11,19 +11,19 @@ const list = (req, res) => {
     HomeModel.find()
     .select("-photo")
     .sort([[sortBy, order]])
-    .exec((err, imageHome) => {
+    .exec((err, HomeModel) => {
         if(err){
             return res.status(400).json({
-                error: err
+                error: "Image de Home no encontrado" + err
             })
         }
-        res.json(imageHome);
+        res.json(HomeModel);
     })
 }
 
 const read = (req, res) => {
-    req.imageHome.photo = undefined; 
-    return res.json(req.imageHome);
+    req.homemodel.photo = undefined; 
+    return res.json(req.homemodel);
 }
 
 const create = (req, res) => {
@@ -36,7 +36,7 @@ const create = (req, res) => {
             })
         }
         const { name, description } = fields;
-        let imageHome = new HomeModel(fields);
+        let homemodel = new HomeModel(fields);
 
         if(files.photo){
             if(files.photo.size > 1000000){
@@ -44,11 +44,11 @@ const create = (req, res) => {
                     error:"Image should be less than 1MB in size"
                 })
             }
-            imageHome.photo.data = fs.readFileSync(files.photo.filepath); 
-            imageHome.photo.contentType = files.photo.type;
+            homemodel.photo.data = fs.readFileSync(files.photo.filepath); 
+            homemodel.photo.contentType = files.photo.type;
         }
 
-        imageHome.save((err, result) => {
+        homemodel.save((err, result) => {
             if(err){
                 return res.status(400).json({
                     error: "Error al guardar el Home" + err
@@ -60,8 +60,8 @@ const create = (req, res) => {
 }
 
 const remove = (req, res ) => {
-    let imageHome = req.imageHome; 
-    imageHome.remove((err, deletedImageHome) => {
+    let homemodel = req.homemodel; 
+    homemodel.remove((err, deletedHomeModel) => {
         if(err){
             return res.status(400).json({
                 error: "Error al eliminar el Home" + err
@@ -75,21 +75,21 @@ const remove = (req, res ) => {
 
 const ImageHomeById = (req, res, next, id) => {
     HomeModel.findById(id)
-    .exec((err, imageHome) => {
+    .exec((err, homemodel) => {
         if(err){
             return res.status(400).json({
                 error: "Home no encontrado"
             })
         }
-        req.imageHome = imageHome;
+        req.homemodel = homemodel;
         next();
     })
 }
 
 const photo = (req, res, next) => {
-    if(req.imageHome.photo.data){
-        res.set('Content-Type', req,imageHome.photo.contentType)
-        return res.send(req.imageHome.photo.data)
+    if(req.homemodel.photo.data){
+        res.set('Content-Type', req.homemodel.photo.contentType)
+        return res.send(req.homemodel.photo.data)
     }
     next()
 }
