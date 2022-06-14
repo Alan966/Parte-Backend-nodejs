@@ -6,13 +6,13 @@ router.get('/imageAll', list)
 
 router.post('/create', create)
 
-router.get('/photo/:ImageMenuById', photo)
+router.get('/photo/:ImageRelojById', photo)
 
-router.get('/:ImageMenuById', read)
+router.get('/:ImageRelojById', read)
 
-router.delete('/:ImageMenuById',remove)
+router.delete('/:ImageRelojById',remove)
 
-router.param("ImageMenuById", ImageMenuById)
+router.param("ImageRelojById", ImageMenuById)
 
 module.exports = router;
 

@@ -13,6 +13,7 @@ const relojTimexTwo = require('./routes/RelojesHomeTwo')
 const pie = require('./routes/pie')
 const pieSecond = require('./routes/pieSecond')
 const Home = require('./routes/Home')
+const RelojesTotalRoute = require('./routes/RelojesTotalRoute')
 
 const cors = require('cors')
 const { response } = require('express')
@@ -44,6 +45,7 @@ app.use('/relojesTimexTwo', relojTimexTwo)
 app.use('/pie', pie)
 app.use('/pieSecond', pieSecond)
 app.use('/home', Home)
+app.use('/relojestotalroute', RelojesTotalRoute)
 
 app.listen(app.get('port'), () => {
     console.log('Mi '+ app.get('title') + 'esta corriendo en el puerto ' + app.get('port'))
