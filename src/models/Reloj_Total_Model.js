@@ -15,6 +15,12 @@ const RelojModel = new Schema(
         require: true,
         maxLength: 200,
     }, 
+    submenutwo:{
+        type: String,
+        trim: true,
+        require: true,
+        maxLength: 200,
+    }, 
     description:{
         type: String,
         trim: true,

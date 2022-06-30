@@ -35,7 +35,7 @@ const create = (req, res) => {
                 error: "Error al subir la imagen"
             })
         }
-        const {name, description} = fields; 
+        const {name, description, principal, submenu, submenutwo, price} = fields; 
         const relojmodel = new RelojModel(fields); 
 
         if(files.photo){
