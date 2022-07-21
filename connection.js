@@ -11,4 +11,4 @@ const connection = mongoose.connect(`mongodb+srv://${process.env.MONGODB_URI}@cl
     console.log('Conexion inexitosa' + err)
 })
 
-module.exports = connection
+module.exports = connection 
