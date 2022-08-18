@@ -14,6 +14,7 @@ const pie = require('./routes/pie')
 const pieSecond = require('./routes/pieSecond')
 const Home = require('./routes/Home')
 const RelojesTotalRoute = require('./routes/RelojesTotalRoute')
+const Autenticacion = require('./routes/Autenticacion')
 
 
 const cors = require('cors')
@@ -47,6 +48,7 @@ app.use('/pie', pie)
 app.use('/pieSecond', pieSecond)
 app.use('/home', Home)
 app.use('/relojestotalroute', RelojesTotalRoute)
+app.use('/autenticacion', Autenticacion)
 
 app.listen(app.get('port'), () => {
     console.log('Mi '+ app.get('title') + 'esta corriendo en el puerto ' + app.get('port'))
